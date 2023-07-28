@@ -87,7 +87,7 @@ class ProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 const Text(
-                  'Badge',
+                  'Badges',
                   style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Raleway',
