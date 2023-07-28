@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../profile_page/profile_page.dart';
 import '../../../resources/resources.dart';
 import '../../blocs/dummy.dart';
+import '../assignment/assignment_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _DashBoardViewState extends State<DashBoardView> {
           // Replace with the actual name
           teamName: 'TEAM A1',
           // Replace with the actual team name
-          teamMembers: ['Alice', 'Bob', 'Charlie','Anna'],
+          teamMembers: ['Alice', 'Bob', 'Charlie', 'Anna'],
           // Replace with the actual team members
           badge: ['Gold Badge', 'Silver Badge', 'Bronze Badge'],
           // Replace with the actual badges
@@ -75,6 +76,15 @@ class _DashBoardViewState extends State<DashBoardView> {
               onPressed: () => _goToResourcesPage(context),
               // Navigate to resources page on button press
               child: Text('View Resources'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AssignmentPage()));
+              },
+              // Navigate to resources page on button press
+              child: Text('View Assignments'),
             ),
           ],
         ),

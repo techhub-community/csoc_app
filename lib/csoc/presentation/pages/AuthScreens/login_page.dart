@@ -1,6 +1,7 @@
 import 'package:csoc/constants.dart';
 import 'package:csoc/csoc/presentation/pages/AuthScreens/forgot_password.dart';
 import 'package:csoc/csoc/presentation/pages/assignment/assignment_page.dart';
+import 'package:csoc/csoc/presentation/pages/dashboard/dashboard_page.dart';
 import 'package:csoc/csoc/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -202,7 +203,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              AssignmentPage()));
+                                              DashboardPage()));
                                   HapticFeedback.lightImpact();
                                 }, context),
                                 SizedBox(width: size.width / 20),
