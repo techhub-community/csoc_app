@@ -62,6 +62,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        //todo: Update the ui of the team section
                         child: Text(
                           ' Team: $teamName',
                           textAlign: TextAlign.center,
@@ -75,13 +76,13 @@ class ProfilePage extends StatelessWidget {
                     children: teamMembers
                         .map(
                           (teamMember) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Text(
-                          teamMember,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    )
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              teamMember,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        )
                         .toList(),
                   ),
                 ),
@@ -96,6 +97,7 @@ class ProfilePage extends StatelessWidget {
                     color: Color(0xFF4E4039),
                   ),
                 ),
+                //TODO: change the badges
                 Container(
                   width: 600,
                   child: GridView.count(

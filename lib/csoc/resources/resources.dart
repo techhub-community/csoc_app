@@ -57,8 +57,8 @@ class _ResourcesPageState extends State<ResourcesPage> {
 
   Future<void> urlLauncher(String url) async {
     Uri newsUrl = Uri.parse(url);
-    if (await canLaunch(newsUrl.toString())) {
-      await launch(newsUrl.toString());
+    if (await canLaunchUrl(newsUrl)) {
+      await launchUrl(newsUrl);
     } else {
       throw 'Error in opening the URL';
     }
@@ -74,6 +74,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
       textColor: Colors.white,
     );
   }
+// todo : update the ui of the resources page
 
   Widget buildResourceList(List<String> resources) {
     return Column(
