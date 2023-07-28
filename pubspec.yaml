@@ -36,7 +36,8 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.3
   fluttertoast: ^8.2.2
-  flutter_staggered_animations: 
+  flutter_staggered_animations:
+  url_launcher: 
 
 dev_dependencies:
 

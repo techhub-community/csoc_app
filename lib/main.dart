@@ -33,7 +33,7 @@ class Csoc extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true, //todo: 1) change the theme
         ),
-        home: AssignmentPage(),
+        home: LoginPage(),
         //initialRoute:DashboardPage.id,
         routes: {
           DashboardPage.id: (context) => const DashboardPage(),

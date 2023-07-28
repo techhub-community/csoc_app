@@ -101,6 +101,19 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          '<CODESHACK/>',
+          style: TextStyle(
+            color: Color(0xffBA704F),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+            wordSpacing: 4,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: Color(0xffFEF8F4),
       body: ScrollConfiguration(
         behavior: MyBehavior(),
@@ -146,21 +159,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                 ),
                 Column(
                   children: [
-                    Expanded(
-                      flex: 5,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: size.height * .1),
-                        child: Text(
-                          '<CodeShack/>',
-                          style: TextStyle(
-                            color: Color(0xffBA704F),
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
-                            wordSpacing: 4,
-                          ),
-                        ),
-                      ),
+                    // Expanded(
+                    //   flex: 5,
+                    //   child: Padding(
+                    //     padding: EdgeInsets.only(top: size.height * .1),
+                    //     child:
+                    //   ),
+                    // ),
+                    SizedBox(
+                      height: 80,
                     ),
                     Expanded(
                       flex: 7,

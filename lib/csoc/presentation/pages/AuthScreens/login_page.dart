@@ -1,4 +1,6 @@
+import 'package:csoc/constants.dart';
 import 'package:csoc/csoc/presentation/pages/AuthScreens/forgot_password.dart';
+import 'package:csoc/csoc/presentation/pages/assignment/assignment_page.dart';
 import 'package:csoc/csoc/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -151,9 +153,9 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                       child: Padding(
                         padding: EdgeInsets.only(top: size.height * .1),
                         child: Text(
-                          '<CodeShack/>',
+                          '<CODESHACK>',
                           style: TextStyle(
-                            color: Color(0xffBA704F),
+                            color: Color(0xff4e4138),
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 1,
@@ -196,6 +198,11 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 widgets.NeoButton('LOGIN', 2.58, () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AssignmentPage()));
                                   HapticFeedback.lightImpact();
                                 }, context),
                                 SizedBox(width: size.width / 20),
@@ -232,7 +239,7 @@ class MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..shader = LinearGradient(
-              colors: [Color(0xffFFEECC), Color(0xffFFEECC)],
+              colors: [const Color.fromARGB(255, 229, 80, 21), darkColor],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight)
           .createShader(Rect.fromCircle(

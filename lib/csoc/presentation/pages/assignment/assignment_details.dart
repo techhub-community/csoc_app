@@ -30,8 +30,8 @@ class _AssignmentDetailsPageState extends State<AssignmentDetailsPage> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        backgroundColor: darkColor.withOpacity(0.7),
-        title: Text("Assignment Details"),
+        backgroundColor: darkColor,
+        title:const Text("Assignment Details"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

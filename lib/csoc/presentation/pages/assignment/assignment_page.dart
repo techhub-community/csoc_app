@@ -17,8 +17,24 @@ class _AssignmentPageState extends State<AssignmentPage> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        backgroundColor: darkColor.withOpacity(0.7),
-        title: Text("Assignments"),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Color(0xffeb5d1e),
+        title: Text(
+          "Assignments",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
       ),
       body: AnimationLimiter(
@@ -53,7 +69,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                         margin: EdgeInsets.only(bottom: _w / 20),
                         height: _w / 4,
                         decoration: BoxDecoration(
-                          color: darkColor.withOpacity(0.7),
+                          color: Color(0xffF1885F),
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           boxShadow: [
                             BoxShadow(
@@ -75,7 +91,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                                   Text(
                                     "Assignment ${index + 1}",
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -83,7 +99,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                                   Text(
                                     "20/07/2023",
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
