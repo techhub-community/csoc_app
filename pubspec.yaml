@@ -35,6 +35,9 @@ dependencies:
   built_value: ^8.6.1
   bloc: ^8.1.2
   flutter_bloc: ^8.1.3
+  flutter_staggered_animations: ^1.1.1
+  url_launcher: ^6.0.9
+  fluttertoast: ^8.0.8
 
 dev_dependencies:
   flutter_test:
@@ -49,8 +52,12 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/heroimg.png
+    - images/profilepic.png
     - images/star.png
+    - images/badge1.png
+    - images/badge2.png
+    - images/badge3.png
+    - images/badge4.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

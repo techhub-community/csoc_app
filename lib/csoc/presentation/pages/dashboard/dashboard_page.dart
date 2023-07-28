@@ -1,9 +1,8 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../profile_page/profile_page.dart';
+import '../../../resources/resources.dart';
 import '../../blocs/dummy.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -40,9 +39,18 @@ class _DashBoardViewState extends State<DashBoardView> {
           // Replace with the actual team members
           badge: ['Gold Badge', 'Silver Badge', 'Bronze Badge'],
           // Replace with the actual badges
-          profilePictureUrl:
-              'https://example.com/profile-picture.jpg', // Replace with the actual profile picture URL
+          profilePictureUrl: 'https://example.com/profile-picture.jpg',
+          // Replace with the actual profile picture URL
         ),
+      ),
+    );
+  }
+
+  void _goToResourcesPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ResourcesPage(),
       ),
     );
   }
@@ -54,36 +62,23 @@ class _DashBoardViewState extends State<DashBoardView> {
         title: Text('Dashboard'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => _goToProfilePage(context),
-          // Navigate to profile page on button press
-          child: Text('View Profile'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => _goToProfilePage(context),
+              // Navigate to profile page on button press
+              child: Text('View Profile'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => _goToResourcesPage(context),
+              // Navigate to resources page on button press
+              child: Text('View Resources'),
+            ),
+          ],
         ),
       ),
     );
-
-    /* return Scaffold(
-      appBar: AppBar(),
-      body: BlocConsumer<Dummy, int>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          final dummyCount = context.watch<Dummy>();
-          return Center(
-            child: Column(
-              children: [
-                Text(
-                    "Hello ${state} \n don't delete any code comment it out for future ref \n"),
-                ElevatedButton(
-                  onPressed: () {
-                    dummyCount.inc();
-                  },
-                  child: Text('Increment'),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );*/
   }
 }

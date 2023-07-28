@@ -20,24 +20,29 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile Page'),
+        backgroundColor: Color(0xffE9B384).withOpacity(0.7),
       ),
       body: Container(
-        color: Color(0xfffef8f5),
+        color: Colors.white,
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  'images/heroimg.png',
-                  height: 150,
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('images/profilepic.png'),
+                    radius: 75,
+                    backgroundColor: Colors.white,
+                  ),
                 ),
                 SizedBox(height: 16),
                 Text(
                   name,
                   style: const TextStyle(
-                    fontSize: 40.0,
+                    fontSize: 30.0,
                     fontFamily: 'Raleway',
                     fontWeight: FontWeight.w700,
                     height: 1.2857,
@@ -45,36 +50,44 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8),
+                // Team Section as ExpansionTile (Accordion)
                 Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    color: Color(0xfffef8f5),
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1,
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "TEAM A1",
-                      style: TextStyle(
-                        color: Color(0xFF4E4039),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: ExpansionTile(
+                    title: Container(
+                      width: 200, // Adjust this value as per your preference
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          ' Team: $teamName',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ),
+                    children: teamMembers
+                        .map(
+                          (teamMember) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Text(
+                          teamMember,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    )
+                        .toList(),
                   ),
-                ),
-                SizedBox(height: 8),
-                Text(
-                  'Team Members: ${teamMembers.join(", ")}',
-                  style: TextStyle(fontSize: 18),
                 ),
                 SizedBox(height: 16),
                 const Text(
-                  'Badge',
+                  'Badges',
                   style: TextStyle(
                     fontSize: 25.0,
                     fontFamily: 'Raleway',
@@ -83,13 +96,42 @@ class ProfilePage extends StatelessWidget {
                     color: Color(0xFF4E4039),
                   ),
                 ),
-                Image.asset(
-                  'images/star.png',
-                  height: 150,
+                Container(
+                  width: 600,
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    padding: EdgeInsets.all(16),
+                    children: [
+                      _buildBadgeContainer('images/badge1.png'),
+                      _buildBadgeContainer('images/badge2.png'),
+                      _buildBadgeContainer('images/badge3.png'),
+                      _buildBadgeContainer('images/badge4.png'),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBadgeContainer(String badgeImageAsset) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.black, width: 1),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(
+          badgeImageAsset,
+          fit: BoxFit.contain,
         ),
       ),
     );
