@@ -57,8 +57,8 @@ class _ResourcesPageState extends State<ResourcesPage> {
 
   Future<void> urlLauncher(String url) async {
     Uri newsUrl = Uri.parse(url);
-    if (await canLaunch(newsUrl.toString())) {
-      await launch(newsUrl.toString());
+    if (await canLaunchUrl(newsUrl)) {
+      await launchUrl(newsUrl);
     } else {
       throw 'Error in opening the URL';
     }
@@ -75,40 +75,48 @@ class _ResourcesPageState extends State<ResourcesPage> {
     );
   }
 
+  // Updated method to build rectangular tiles with down arrow for headings
   Widget buildResourceList(List<String> resources) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: resources
           .map(
             (url) => GestureDetector(
-              onTap: () => urlLauncher(url),
-              onLongPress: () => _copyToClipboard(context, url),
-              child: Container(
-                margin: EdgeInsets.only(bottom: 8),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                decoration: BoxDecoration(
-                  color: Color(0xffE9B384).withOpacity(0.7),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 40,
-                      spreadRadius: 10,
-                    ),
-                  ],
+          onTap: () => urlLauncher(url),
+          onLongPress: () => _copyToClipboard(context, url),
+          child: Container(
+            margin: EdgeInsets.only(bottom: 8),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            decoration: BoxDecoration(
+              color: Color(0xffE9B384).withOpacity(0.7),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 40,
+                  spreadRadius: 10,
                 ),
-                child: Text(
-                  url,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  overflow: TextOverflow.visible,
-                ),
-              ),
+              ],
             ),
-          )
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    url,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    overflow: TextOverflow.visible,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      )
           .toList(),
     );
   }
@@ -126,8 +134,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
       body: AnimationLimiter(
         child: ListView.builder(
           padding: EdgeInsets.all(_w / 30),
-          physics:
-              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           itemCount: sections.length,
           itemBuilder: (BuildContext context, int sectionIndex) {
             final section = sections[sectionIndex];
@@ -144,12 +151,22 @@ class _ResourcesPageState extends State<ResourcesPage> {
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      sectionNames[sectionIndex], // Section names
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          sectionNames[sectionIndex], // Section names
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Icon(
+                          isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                          size: 30,
+                          color: Colors.black,
+                        ),
+                      ],
                     ),
                   ),
                 ),
