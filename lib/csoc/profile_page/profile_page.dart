@@ -7,7 +7,8 @@ class ProfilePage extends StatelessWidget {
   final List<String> badge;
   final String profilePictureUrl;
 
-  ProfilePage({
+  const ProfilePage({
+    super.key,
     required this.name,
     required this.teamName,
     required this.teamMembers,
@@ -19,8 +20,8 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile Page'),
-        backgroundColor: Color(0xffE9B384).withOpacity(0.7),
+        title: const Text('Profile Page'),
+        backgroundColor: const Color(0xffE9B384).withOpacity(0.7),
       ),
       body: Container(
         color: Colors.white,
@@ -30,7 +31,7 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: CircleAvatar(
                     backgroundImage: AssetImage('images/profilepic.png'),
@@ -38,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                     backgroundColor: Colors.white,
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   name,
                   style: const TextStyle(
@@ -49,10 +50,10 @@ class ProfilePage extends StatelessWidget {
                     color: Color(0xFF4E4039),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 // Team Section as ExpansionTile (Accordion)
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: ExpansionTile(
                     title: Container(
                       width: 200, // Adjust this value as per your preference
@@ -64,9 +65,9 @@ class ProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         //todo: Update the ui of the team section
                         child: Text(
-                          ' Team: $teamName',
+                          '$teamName',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
@@ -76,25 +77,34 @@ class ProfilePage extends StatelessWidget {
                     children: teamMembers
                         .map(
                           (teamMember) => Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Text(
-                              teamMember,
-                              style: TextStyle(fontSize: 16),
-                            ),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 16.0, // Add horizontal padding to align left
+                        ),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            teamMember,
+                            style: const TextStyle(fontSize: 16),
                           ),
-                        )
+                        ),
+                      ),
+                    )
                         .toList(),
                   ),
                 ),
-                SizedBox(height: 16),
-                const Text(
-                  'Badge',
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    fontFamily: 'Raleway',
-                    fontWeight: FontWeight.w700,
-                    height: 1.2857,
-                    color: Color(0xFF4E4039),
+                const SizedBox(height: 16),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '   Badges:',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.w700,
+                      height: 1.2857,
+                      color: Color(0xFF4E4039),
+                    ),
                   ),
                 ),
                 //TODO: change the badges
@@ -105,7 +115,7 @@ class ProfilePage extends StatelessWidget {
                     crossAxisCount: 2,
                     mainAxisSpacing: 8,
                     crossAxisSpacing: 8,
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     children: [
                       _buildBadgeContainer('images/badge1.png'),
                       _buildBadgeContainer('images/badge2.png'),
