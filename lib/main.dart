@@ -2,6 +2,7 @@ import 'package:csoc/csoc/presentation/pages/AuthScreens/forgot_password.dart';
 import 'package:csoc/csoc/presentation/pages/assignment/assignment_page.dart';
 import 'package:csoc/csoc/presentation/pages/dashboard/dashboard_page.dart';
 import 'package:csoc/csoc/presentation/pages/AuthScreens/login_page.dart';
+import 'package:csoc/csoc/presentation/pages/quiz_section/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +34,7 @@ class Csoc extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true, //todo: 1) change the theme
         ),
-        home: LoginPage(),
+        home: QuizApp(),
         //initialRoute:DashboardPage.id,
         routes: {
           DashboardPage.id: (context) => const DashboardPage(),

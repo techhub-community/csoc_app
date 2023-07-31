@@ -38,6 +38,7 @@ dependencies:
   fluttertoast: ^8.2.2
   flutter_staggered_animations:
   url_launcher: 
+  http:
 
 dev_dependencies:
 
