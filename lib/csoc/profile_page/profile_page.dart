@@ -39,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                     backgroundColor: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 16), //set according to media query
                 Text(
                   name,
                   style: const TextStyle(
@@ -132,6 +132,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
+  //keep inside widgets directory
   Widget _buildBadgeContainer(String badgeImageAsset) {
     return Container(
       decoration: BoxDecoration(

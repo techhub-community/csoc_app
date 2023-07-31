@@ -150,7 +150,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                     });
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),//set according to media query
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

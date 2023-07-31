@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../profile_page/profile_page.dart';
 import '../../../resources/resources.dart';
 import '../../blocs/dummy.dart';
+import '../DSA/Dsa_section.dart';
 import '../assignment/assignment_page.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -24,6 +25,14 @@ class DashBoardView extends StatefulWidget {
 
   @override
   State<DashBoardView> createState() => _DashBoardViewState();
+}
+void _goToSubmissionsPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => SubmissionsPage(),
+    ),
+  );
 }
 
 class _DashBoardViewState extends State<DashBoardView> {
@@ -62,10 +71,17 @@ class _DashBoardViewState extends State<DashBoardView> {
       appBar: AppBar(
         title: Text('Dashboard'),
       ),
+      //todo: add navbar and all elevated buttons , add image (heroimg)
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ElevatedButton(
+              onPressed: () => _goToSubmissionsPage(context),
+              // Navigate to submissions page on button press
+              child: Text('View Submissions'),
+            ),
+
             ElevatedButton(
               onPressed: () => _goToProfilePage(context),
               // Navigate to profile page on button press
