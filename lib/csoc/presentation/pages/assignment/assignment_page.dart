@@ -69,7 +69,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                         margin: EdgeInsets.only(bottom: _w / 20),
                         height: _w / 4,
                         decoration: BoxDecoration(
-                          color: Color(0xffF1885F),
+                          color:  cardColor,
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           boxShadow: [
                             BoxShadow(

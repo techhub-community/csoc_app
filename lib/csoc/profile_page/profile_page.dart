@@ -1,3 +1,4 @@
+import 'package:csoc/constants.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -20,7 +21,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile Page'),
-        backgroundColor: Color(0xffE9B384).withOpacity(0.7),
+        backgroundColor: appBarColor,
       ),
       body: Container(
         color: Colors.white,
@@ -75,13 +76,13 @@ class ProfilePage extends StatelessWidget {
                     children: teamMembers
                         .map(
                           (teamMember) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Text(
-                          teamMember,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    )
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              teamMember,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        )
                         .toList(),
                   ),
                 ),

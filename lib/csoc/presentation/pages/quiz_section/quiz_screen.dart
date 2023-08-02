@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 
 import 'api_services.dart';
 
-
 import 'const/text_style.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -24,6 +23,7 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> {
   var currentQuestionIndex = 0;
+  bool isAnswered = false;
   int seconds = 60;
   Timer? timer;
   late Future quiz;
@@ -93,12 +93,12 @@ class _QuizScreenState extends State<QuizScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        padding: const EdgeInsets.all(12),
-        decoration: const BoxDecoration(
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Colors.white, Colors.orange],
+          colors: [gradientColor, darkColor],
         )),
         child: FutureBuilder(
           future: quiz,
@@ -125,7 +125,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            border: Border.all(color: Colors.grey, width: 2),
+                            border: Border.all(color: Colors.white, width: 2),
                           ),
                           child: IconButton(
                               onPressed: () {
@@ -158,7 +158,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: Colors.grey, width: 2),
+                            border: Border.all(color: Colors.white, width: 2),
                           ),
                           child: TextButton.icon(
                               onPressed: null,
@@ -175,7 +175,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     Align(
                         alignment: Alignment.centerLeft,
                         child: normalText(
-                            color: Colors.grey,
+                            color: logoColor,
                             size: 18,
                             text:
                                 "Question ${currentQuestionIndex + 1} of ${data.length}")),
@@ -193,50 +193,57 @@ class _QuizScreenState extends State<QuizScreen> {
                             data[currentQuestionIndex]["correct_answer"];
 
                         return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              if (answer.toString() ==
-                                  optionsList[index].toString()) {
-                                optionsColor[index] = Colors.green;
-                                points = points + 1;
-                              } else {
-                                optionsColor[index] = Colors.red;
-                              }
+                          onTap: !isAnswered
+                              ? () {
+                                  setState(() {
+                                    isAnswered = true;
 
-                              if (currentQuestionIndex < data.length - 1) {
-                                Future.delayed(const Duration(seconds: 1), () {
-                                  gotoNextQuestion();
-                                });
-                              } else {
-                                timer!.cancel();
-                                if (points > 7) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => RESULTS(
-                                              points,
-                                              Colors.blue.shade200,
-                                              'WellDone!!')));
-                                } else if (points < 5) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => RESULTS(
-                                              points,
-                                              Colors.red.shade200,
-                                              'Better Luck Next Time')));
-                                } else {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => RESULTS(
-                                              points,
-                                              Colors.blueAccent.shade200,
-                                              'Good!!')));
+                                    if (answer.toString() ==
+                                        optionsList[index].toString()) {
+                                      optionsColor[index] = Colors.green;
+                                      points = points + 1;
+                                    } else {
+                                      optionsColor[index] = Colors.red;
+                                    }
+
+                                    if (currentQuestionIndex <
+                                        data.length - 1) {
+                                      Future.delayed(const Duration(seconds: 1),
+                                          () {
+                                        gotoNextQuestion();
+                                        isAnswered = false;
+                                      });
+                                    } else {
+                                      timer!.cancel();
+                                      if (points > 7) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => RESULTS(
+                                                    points,
+                                                    
+                                                    'WellDone!!')));
+                                      } else if (points < 5) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => RESULTS(
+                                                    points,
+                                                    
+                                                    'Better Luck Next Time')));
+                                      } else {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => RESULTS(
+                                                    points,
+                                                  
+                                                    'Good!!')));
+                                      }
+                                    }
+                                  });
                                 }
-                              }
-                            });
-                          },
+                              : null,
                           child: Container(
                             margin: const EdgeInsets.only(bottom: 20),
                             alignment: Alignment.center,
