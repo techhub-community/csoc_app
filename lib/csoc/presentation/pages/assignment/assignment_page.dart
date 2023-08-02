@@ -69,7 +69,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                         margin: EdgeInsets.only(bottom: _w / 20),
                         height: _w / 4,
                         decoration: BoxDecoration(
-                          color:  cardColor,
+                          color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           boxShadow: [
                             BoxShadow(
@@ -83,6 +83,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 15),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +92,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                                   Text(
                                     "Assignment ${index + 1}",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: appBarColor,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -99,14 +100,13 @@ class _AssignmentPageState extends State<AssignmentPage> {
                                   Text(
                                     "20/07/2023",
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: appBarColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ],
                               ),
-                              Spacer(),
                               InkWell(
                                   onTap: () {
                                     setState(() {
@@ -127,8 +127,8 @@ class _AssignmentPageState extends State<AssignmentPage> {
                                       child: Center(
                                           child: Text(
                                         (_status == false)
-                                            ? "Completed"
-                                            : "Pending",
+                                            ? AssignmentStatus.completed.name
+                                            : AssignmentStatus.pending.name,
                                         style: TextStyle(
                                             color: (_status == false)
                                                 ? const Color(0xFF10B981)

@@ -98,7 +98,7 @@ class _QuizScreenState extends State<QuizScreen> {
             gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [gradientColor, darkColor],
+          colors: [darkColor, gradientColor],
         )),
         child: FutureBuilder(
           future: quiz,
@@ -137,40 +137,25 @@ class _QuizScreenState extends State<QuizScreen> {
                                 size: 28,
                               )),
                         ),
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            normalText(
-                                color: Colors.white,
-                                size: 24,
-                                text: "$seconds"),
-                            SizedBox(
-                              width: 80,
-                              height: 80,
-                              child: CircularProgressIndicator(
-                                value: seconds / 60,
-                                valueColor:
-                                    const AlwaysStoppedAnimation(Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: Colors.white, width: 2),
+                      ],
+                    ),
+                    const SizedBox(height: 40),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        normalText(
+                            color: Colors.white, size: 24, text: "$seconds"),
+                        SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: CircularProgressIndicator(
+                            value: seconds / 60,
+                            valueColor:
+                                const AlwaysStoppedAnimation(Colors.white),
                           ),
-                          child: TextButton.icon(
-                              onPressed: null,
-                              icon: const Icon(CupertinoIcons.heart_fill,
-                                  color: Colors.white, size: 18),
-                              label: normalText(
-                                  color: Colors.white, size: 14, text: "Like")),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    Image.asset("images/badge3.png", width: 200),
                     const SizedBox(height: 20),
                     Align(
                         alignment: Alignment.centerLeft,
@@ -220,25 +205,20 @@ class _QuizScreenState extends State<QuizScreen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => RESULTS(
-                                                    points,
-                                                    
-                                                    'WellDone!!')));
+                                                    points, 'WellDone!!')));
                                       } else if (points < 5) {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => RESULTS(
                                                     points,
-                                                    
                                                     'Better Luck Next Time')));
                                       } else {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => RESULTS(
-                                                    points,
-                                                  
-                                                    'Good!!')));
+                                                builder: (context) =>
+                                                    RESULTS(points, 'Good!!')));
                                       }
                                     }
                                   });

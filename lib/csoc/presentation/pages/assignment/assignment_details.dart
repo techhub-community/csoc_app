@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
 
+enum AssignmentStatus { completed, pending }
+
 class AssignmentDetailsPage extends StatefulWidget {
   final String assignmentDescription;
   final bool isCompleted;
@@ -30,8 +32,16 @@ class _AssignmentDetailsPageState extends State<AssignmentDetailsPage> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: appBarColor,
-        title: const Text("Assignment Details"),
+        title: const Text(
+          "Assignment Details",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -56,7 +66,10 @@ class _AssignmentDetailsPageState extends State<AssignmentDetailsPage> {
                     });
                   },
                 ),
-                Text(_isCompleted! ? "Completed" : "Pending"),
+                //todo make enum for status
+                Text(_isCompleted!
+                    ? AssignmentStatus.completed.name
+                    : AssignmentStatus.pending.name),
               ],
             ),
             SizedBox(height: 20),

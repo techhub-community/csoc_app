@@ -12,6 +12,7 @@ class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+//todo change the backbutton througout the app
 
     return Scaffold(
       body: Container(
@@ -22,7 +23,7 @@ class QuizApp extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [gradientColor, darkColor])),
+                colors: [darkColor, gradientColor])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,12 +39,12 @@ class QuizApp extends StatelessWidget {
             Image.asset("images/badge2.png",
                 width: size.width * 0.8, height: size.height * 0.4),
             const SizedBox(height: 20),
-            normalText(color: logoColor, size: 18, text: "Welcome to our"),
-            headingText(color: logoColor, size: 32, text: "Quiz App"),
+            normalText(color: Colors.white, size: 18, text: "Welcome to our"),
+            headingText(color: Colors.white, size: 36, text: "Quiz App"),
             const SizedBox(height: 20),
             normalText(
-                color: logoColor,
-                size: 16,
+                color: Colors.white,
+                size: 18,
                 text:
                     "Do you feel confident? Here you'll face our most difficult questions!"),
             const Spacer(),
