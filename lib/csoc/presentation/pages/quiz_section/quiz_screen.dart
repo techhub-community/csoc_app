@@ -122,48 +122,71 @@ class _QuizScreenState extends State<QuizScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(color: Colors.white, width: 2),
-                          ),
-                          child: IconButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              icon: const Icon(
-                                CupertinoIcons.xmark,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                              height: 50,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Exit",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ))),
+                        ),
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            normalText(
                                 color: Colors.white,
-                                size: 28,
-                              )),
+                                size: 24,
+                                text: "$seconds"),
+                            SizedBox(
+                              width: 70,
+                              height: 70,
+                              child: CircularProgressIndicator(
+                                value: seconds / 60,
+                                valueColor:
+                                    const AlwaysStoppedAnimation(Colors.white),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                     const SizedBox(height: 40),
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        normalText(
-                            color: Colors.white, size: 24, text: "$seconds"),
-                        SizedBox(
-                          width: 80,
-                          height: 80,
-                          child: CircularProgressIndicator(
-                            value: seconds / 60,
-                            valueColor:
-                                const AlwaysStoppedAnimation(Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
+
                     const SizedBox(height: 20),
-                    Align(
-                        alignment: Alignment.centerLeft,
-                        child: normalText(
-                            color: logoColor,
-                            size: 18,
-                            text:
-                                "Question ${currentQuestionIndex + 1} of ${data.length}")),
+                    Container(
+                      height: 40,
+                      width: size.width,
+                      child: ListView.builder(
+                        itemCount: data.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return CircleAvatar(
+                              backgroundColor: currentQuestionIndex == index
+                                  ? Colors.white
+                                  : Colors.transparent,
+                              child: Text("${index + 1}"));
+                        },
+                      ),
+                    ),
+                    // Align(
+                    //     alignment: Alignment.centerLeft,
+                    //     child: normalText(
+                    //         color: logoColor,
+                    //         size: 18,
+                    //         text:
+                    //             "Question ${currentQuestionIndex + 1} of ${data.length}")),
                     const SizedBox(height: 20),
                     normalText(
                         color: Colors.white,
@@ -188,7 +211,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                       optionsColor[index] = Colors.green;
                                       points = points + 1;
                                     } else {
-                                      optionsColor[index] = Colors.red;
+                                      optionsColor[index] = Colors.green;
                                     }
 
                                     if (currentQuestionIndex <

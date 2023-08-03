@@ -29,7 +29,10 @@ class RESULTS extends StatelessWidget {
                   child: GestureDetector(
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => QuizApp())),
-                      child: CustomBackButton())),
+                      child: CustomBackButton(
+                          gradColor1: Colors.white,
+                          gradColor2: Colors.white,
+                          iconColor: appBarColor))),
               SizedBox(
                 height: 150,
               ),

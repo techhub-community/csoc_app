@@ -155,7 +155,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                               onTap: () => Navigator.pop(context),
-                              child: CustomBackButton())),
+                              child: CustomBackButton(
+                                gradColor1: gradientColor,
+                                gradColor2: darkColor,
+                                iconColor: Colors.white,
+                              ))),
                     ),
                     SizedBox(
                       height: 80,

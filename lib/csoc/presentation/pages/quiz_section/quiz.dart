@@ -33,7 +33,10 @@ class QuizApp extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: CustomBackButton())),
+                      child: CustomBackButton(
+                          gradColor1: Colors.white,
+                          gradColor2: Colors.white,
+                          iconColor: appBarColor))),
             ),
             SizedBox(height: size.height * 0.1),
             Image.asset("images/badge2.png",
@@ -66,11 +69,14 @@ class QuizApp extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child:
-                      headingText(color: logoColor, size: 18, text: "Continue"),
+                  child: headingText(
+                    color: appBarColor,
+                    size: 18,
+                    text: "Continue",
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
