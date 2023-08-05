@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../profile_page/profile_page.dart';
 import '../../../resources/resources.dart';
 import '../../blocs/dummy.dart';
+import '../AppDev/App_section.dart';
 import '../DSA/Dsa_section.dart';
+import '../UI/UI_sec.dart';
+import '../WebDev/Web_section.dart';
 import '../assignment/assignment_page.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -26,11 +29,39 @@ class DashBoardView extends StatefulWidget {
   @override
   State<DashBoardView> createState() => _DashBoardViewState();
 }
+
 void _goToSubmissionsPage(BuildContext context) {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => SubmissionsPage(),
+      builder: (context) => DsaPage(),
+    ),
+  );
+}
+
+void _goToWebPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => WebPage(),
+    ),
+  );
+}
+
+void _goToAppPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => AppPage(),
+    ),
+  );
+}
+
+void _goToUiPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => UiPage(),
     ),
   );
 }
@@ -79,9 +110,27 @@ class _DashBoardViewState extends State<DashBoardView> {
             ElevatedButton(
               onPressed: () => _goToSubmissionsPage(context),
               // Navigate to submissions page on button press
-              child: Text('View Submissions'),
+              child: Text('Dsa Section'),
             ),
-
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => _goToAppPage(context),
+              // Navigate to submissions page on button press
+              child: Text('App Section'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => _goToUiPage(context),
+              // Navigate to submissions page on button press
+              child: Text('Ui Section'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => _goToWebPage(context),
+              // Navigate to submissions page on button press
+              child: Text('Web Section'),
+            ),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => _goToProfilePage(context),
               // Navigate to profile page on button press

@@ -8,7 +8,7 @@ class Submission {
   Submission(this.title, this.isAttempted);
 }
 
-class DsaPage extends StatelessWidget {
+class UiPage extends StatelessWidget {
   final List<PieChartSectionData> pieChartData = [
     PieChartSectionData(
       value: 25,
@@ -63,7 +63,7 @@ class DsaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DSA'),
+        title: Text('UI/UX'),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -172,6 +172,6 @@ class DsaPage extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(
-    home: DsaPage(),
+    home: UiPage(),
   ));
 }
