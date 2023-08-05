@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xffFEF8F4),
+      backgroundColor: bgColor,
       body: ScrollConfiguration(
         behavior: MyBehavior(),
         child: SingleChildScrollView(
@@ -155,7 +155,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         child: Text(
                           '<CODESHACK>',
                           style: TextStyle(
-                            color: Color(0xff4e4138),
+                            color: logoColor,
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 1,
@@ -189,8 +189,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                 },
                                 child: Text(
                                   "Forgot Password?    ",
-                                  style: TextStyle(
-                                      color: Colors.brown.withOpacity(.8)),
+                                  style: TextStyle(color: logoColor),
                                 ),
                               ),
                             ),
@@ -239,7 +238,7 @@ class MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..shader = LinearGradient(
-              colors: [const Color.fromARGB(255, 229, 80, 21), darkColor],
+              colors: [gradientColor, darkColor],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight)
           .createShader(Rect.fromCircle(

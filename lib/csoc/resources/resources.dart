@@ -1,3 +1,4 @@
+import 'package:csoc/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -82,21 +83,23 @@ class _ResourcesPageState extends State<ResourcesPage> {
       children: resources
           .map(
             (url) => GestureDetector(
-          onTap: () => urlLauncher(url),
-          onLongPress: () => _copyToClipboard(context, url),
-          child: Container(
-            margin: EdgeInsets.only(bottom: 8),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            decoration: BoxDecoration(
-              color: Color(0xffE9B384).withOpacity(0.7),
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 40,
-                  spreadRadius: 10,
-                ),
-              ],
+              onTap: () => urlLauncher(url),
+              onLongPress: () => _copyToClipboard(context, url),
+              child: Container(
+                margin: EdgeInsets.only(bottom: 8),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                decoration: BoxDecoration(
+                  color: cardColor,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 40,
+                      spreadRadius: 10,
+                    ),
+                  ],
+                
+            
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -125,9 +128,9 @@ class _ResourcesPageState extends State<ResourcesPage> {
   Widget build(BuildContext context) {
     double _w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color(0xffFEF8F4),
+      backgroundColor: bgColor,
       appBar: AppBar(
-        backgroundColor: Color(0xffFEF8F4).withOpacity(0.7),
+        backgroundColor: appBarColor,
         title: Text("Resources"),
         centerTitle: true,
       ),

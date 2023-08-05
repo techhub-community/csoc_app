@@ -1,3 +1,5 @@
+import 'package:csoc/constants.dart';
+import 'package:csoc/csoc/presentation/widgets/custom_back_button.dart';
 import 'package:csoc/csoc/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +13,7 @@ class ResetPasswordPage extends StatefulWidget {
 
 class _ResetPasswordPageState extends State<ResetPasswordPage>
     with TickerProviderStateMixin {
-  final CustomWidgets widgets = CustomWidgets();
+  CustomWidgets widgets = CustomWidgets();
   late AnimationController controller1;
   late AnimationController controller2;
   late Animation<double> animation1;
@@ -101,20 +103,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          '<CODESHACK/>',
-          style: TextStyle(
-            color: Color(0xffBA704F),
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1,
-            wordSpacing: 4,
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-      ),
-      backgroundColor: Color(0xffFEF8F4),
+      backgroundColor: bgColor,
       body: ScrollConfiguration(
         behavior: MyBehavior(),
         child: SingleChildScrollView(
@@ -159,13 +148,19 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                 ),
                 Column(
                   children: [
-                    // Expanded(
-                    //   flex: 5,
-                    //   child: Padding(
-                    //     padding: EdgeInsets.only(top: size.height * .1),
-                    //     child:
-                    //   ),
-                    // ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 60),
+                      child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: GestureDetector(
+                              onTap: () => Navigator.pop(context),
+                              child: CustomBackButton(
+                                gradColor1: gradientColor,
+                                gradColor2: darkColor,
+                                iconColor: Colors.white,
+                              ))),
+                    ),
                     SizedBox(
                       height: 80,
                     ),
@@ -181,7 +176,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage>
                               child: Text(
                                 'Please enter your email address below to reset your password',
                                 style: TextStyle(
-                                  color: Color(0xffBA704F),
+                                  color: logoColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
                                   letterSpacing: 1,
@@ -231,7 +226,7 @@ class MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..shader = LinearGradient(
-              colors: [Color(0xffFFEECC), Color(0xffFFEECC)],
+              colors: [gradientColor, darkColor],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight)
           .createShader(Rect.fromCircle(

@@ -1,3 +1,4 @@
+import 'package:csoc/constants.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -20,8 +21,8 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile Page'),
-        backgroundColor: const Color(0xffE9B384).withOpacity(0.7),
+        title: Text('Profile Page'),
+        backgroundColor: appBarColor,
       ),
       body: Container(
         color: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:csoc/csoc/presentation/pages/quiz_section/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -150,6 +151,15 @@ class _DashBoardViewState extends State<DashBoardView> {
               },
               // Navigate to resources page on button press
               child: Text('View Assignments'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => QuizApp()));
+              },
+              // Navigate to resources page on button press
+              child: Text('quiz'),
             ),
           ],
         ),
